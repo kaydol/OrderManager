@@ -160,6 +160,7 @@ namespace OrderManager
                     {
                         Customer selected = c;
                         customerData.data.Remove(selected);
+                        selectedCustomer = null;
                         break;
                     }
                 }
@@ -176,7 +177,7 @@ namespace OrderManager
             {
                 foreach (Item i in assortmentData.data)
                 {
-                    if (i.GetName() == name)
+                    if (i.ToString() == name)
                     {
                         Item selected = i;
                         assortmentData.data.Remove(selected);
@@ -237,7 +238,7 @@ namespace OrderManager
             }
 
             bool success = true;
-            if (selectedCustomer != null)
+            if (selectedCustomer != null && selectedItem != null)
                 success = selectedCustomer.AddItemToCart(selectedItem);
 
             if (!success)
