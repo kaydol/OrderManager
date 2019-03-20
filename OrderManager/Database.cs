@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OrderManager
@@ -18,7 +14,8 @@ namespace OrderManager
         public static void SaveDialogue(T data, String filter, String defaultExt)
         {
             SaveFileDialog file = new SaveFileDialog();
-            file.Filter = filter;  
+            file.Filter = filter;
+            file.InitialDirectory = Application.StartupPath;
             file.DefaultExt = defaultExt;
             if (file.ShowDialog() != DialogResult.OK)
                 return;
@@ -33,6 +30,7 @@ namespace OrderManager
             String path;
             OpenFileDialog file = new OpenFileDialog();
             file.Filter = filter;
+            file.InitialDirectory = Application.StartupPath;
             if (file.ShowDialog() != DialogResult.OK)
                 return;
             
