@@ -1,0 +1,12 @@
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\OrderManager.exe.config
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\OrderManager.exe
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\OrderManager.pdb
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.csprojAssemblyReference.cache
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.MainWindowForm.resources
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.NewCustomerForm.resources
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.Properties.Resources.resources
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.csproj.GenerateResource.cache
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.csproj.CoreCompileInputs.cache
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.exe
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.pdb
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.NewItemForm.resources
