@@ -8,11 +8,14 @@ namespace OrderManager
 {
     public partial class MainWindowForm : Form
     {
-        static public CustomerData customerData = new CustomerData();
-        static public AssortmentData assortmentData = new AssortmentData();
+        
         static public NewCustomerForm newCustomerForm = null;
         static public NewItemForm newItemForm = null;
         static public MainWindowForm MainWindow;
+
+        static public CustomerData customerData = new CustomerData();
+        static public AssortmentData assortmentData = new AssortmentData();
+
         Customer selectedCustomer = null;
 
         public MainWindowForm()
@@ -27,7 +30,7 @@ namespace OrderManager
             {
                 listBox_AllClients.Items.Clear();
 
-                foreach (Customer c in customerData.data) {
+                foreach (Customer c in customerData.Get()) {
                     listBox_AllClients.Items.Add(c);
                 }
             }
@@ -36,7 +39,7 @@ namespace OrderManager
             {
                 listBox_Menu.Items.Clear();
 
-                foreach (Item c in assortmentData.data)
+                foreach (Item c in assortmentData.Get())
                 {
                     listBox_Menu.Items.Add(c);
                 }
@@ -149,16 +152,13 @@ namespace OrderManager
             var confirmResult = MessageBox.Show("Delete customer " + name + "?", "Confirm Delete", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                foreach (Customer c in customerData.data)
+                var index = customerData.Get().FindIndex(i => i.GetName() == name);
+                if (index >= 0)
                 {
-                    if (c.GetName() == name)
-                    {
-                        Customer selected = c;
-                        customerData.data.Remove(selected);
-                        selectedCustomer = null;
-                        break;
-                    }
+                    customerData.RemoveAt(index);
+                    selectedCustomer = null;
                 }
+                
                 UpdateData(Constants.UPDATE_CUSTOMERS | Constants.UPDATE_SELECTED);
             }
         }
@@ -170,47 +170,45 @@ namespace OrderManager
             var confirmResult = MessageBox.Show("Delete item " + name + "?", "Confirm Delete", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                foreach (Item i in assortmentData.data)
+                var index = assortmentData.Get().FindIndex(i => i.ToString() == name);
+                if (index >= 0)
                 {
-                    if (i.ToString() == name)
-                    {
-                        Item selected = i;
-                        assortmentData.data.Remove(selected);
-                        break;
-                    }
+                    assortmentData.RemoveAt(index);
+                    selectedCustomer = null;
                 }
+                
                 UpdateData(Constants.UPDATE_ASSORTMENT);
             }
         }
 
         private void toolStripMenuItem_LoadCustomerDB_Click(object sender, EventArgs e)
         {
-            Database<CustomerData>.LoadDialogue(ref customerData, "Customer DB (*.bincdb) | *.bincdb");
+            Database.LoadDialogue(ref customerData, "Customer DB (*.bincdb) | *.bincdb");
             UpdateData(Constants.UPDATE_CUSTOMERS);
         }
 
         private void toolStripMenuItem_SaveCustomerDB_Click(object sender, EventArgs e)
         {
-            Database<CustomerData>.SaveDialogue(customerData, "Customer DB (*.bincdb) | *.bincdb", ".bincdb");
+            Database.SaveDialogue(customerData, "Customer DB (*.bincdb) | *.bincdb", ".bincdb");
         }
 
         private void toolStripMenuItem_LoadMenuDB_Click(object sender, EventArgs e)
         {
-            Database<AssortmentData>.LoadDialogue(ref assortmentData, "Assortment DB (*.binadb) | *.binadb");
+            Database.LoadDialogue(ref assortmentData, "Assortment DB (*.binadb) | *.binadb");
             UpdateData(Constants.UPDATE_ASSORTMENT);
         }
 
         private void toolStripMenuItem_SaveMenuDB_Click(object sender, EventArgs e)
         {
-            Database<AssortmentData>.SaveDialogue(assortmentData, "Assortment DB (*.binadb) | *.binadb", ".binadb");
+            Database.SaveDialogue(assortmentData, "Assortment DB (*.binadb) | *.binadb", ".binadb");
         }
 
         private void listbox_AllClients_SelectedItemChanged(object sender, EventArgs e)
         {
             String name = listBox_AllClients.GetItemText(listBox_AllClients.SelectedItem);
-            foreach (Customer c in customerData.data)
+            foreach (Customer c in customerData.Get())
             {
-                if (c.HasSameName(name)) {
+                if (c.GetName() == name) {
                     selectedCustomer = c;
                     break;
                 }
@@ -223,7 +221,7 @@ namespace OrderManager
         {
             String name = listBox_Menu.GetItemText(listBox_Menu.SelectedItem);
             Item selectedItem = null;
-            foreach (Item c in assortmentData.data)
+            foreach (Item c in assortmentData.Get())
             {
                 if (c.ToString() == name)
                 {
@@ -249,18 +247,6 @@ namespace OrderManager
             selectedCustomer.FinalizeOrder();
             UpdateData(Constants.UPDATE_SELECTED);
         }
-    }
-
-    [Serializable]
-    public class CustomerData
-    {
-        public List<Customer> data = new List<Customer> ();
-    }
-
-    [Serializable]
-    public class AssortmentData
-    {
-        public List<Item> data = new List<Item>();
     }
 
     public static class Constants

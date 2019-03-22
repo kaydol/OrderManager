@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace OrderManager
@@ -20,27 +21,27 @@ namespace OrderManager
 
         private void button_CreateNewCustomer_Click(object sender, EventArgs e)
         {
-            List<Customer> link = MainWindowForm.customerData.data;
-            if (link == null)
-            { 
-                link = new List<Customer>();
-                MainWindowForm.customerData.data = link;
+            String name = textBox_CreateNewCustomer.Text.Trim();
+
+            Regex r = new Regex(@"\s+");
+            name = r.Replace(name, @" ");
+
+            if (name == "") {
+                MessageBox.Show("Invalid name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
             }
 
-
-            String name = textBox_CreateNewCustomer.Text;
-
             // Unique check
-            foreach (Customer c in link)
+            foreach (Customer c in MainWindowForm.customerData.Get())
             {
-                if (c.HasSameName(name))
+                if (c.GetName().ToLower() == name.ToLower())
                 {
                     MessageBox.Show("Customer with this name already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
             }
-            
-            link.Add(new Customer(textBox_CreateNewCustomer.Text));
+
+            MainWindowForm.customerData.Add(new Customer(name));
             MainWindowForm.MainWindow.UpdateData(Constants.UPDATE_CUSTOMERS);
         }
 

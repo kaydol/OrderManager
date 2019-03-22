@@ -17,11 +17,6 @@ namespace OrderManager
             this.history = history;
         }
 
-        public bool HasSameName(String name)
-        {
-            return fullname.CompareTo(name) == 0;
-        }
-
         public String GetName()
         {
             return this.fullname;

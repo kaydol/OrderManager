@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace OrderManager
@@ -20,17 +21,20 @@ namespace OrderManager
 
         private void button_CreateNewItem_Click(object sender, EventArgs e)
         {
-            List<Item> link = MainWindowForm.assortmentData.data;
-            if (link == null)
-            {
-                link = new List<Item>();
-                MainWindowForm.assortmentData.data = link;
+            String name = textBox_CreateNewCustomer.Text.Trim();
+
+            Regex r = new Regex(@"\s+");
+            name = r.Replace(name, @" ");
+
+            if (name == "") {
+                MessageBox.Show("Invalid name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
             }
 
-            String name = textBox_CreateNewCustomer.Text;
-            double cost;
+            String coststr = textBox_ItemCost.Text.Replace('.', ',');
 
-            if (!Double.TryParse(textBox_ItemCost.Text, out cost)) {
+            double cost;
+            if (!Double.TryParse(coststr, out cost)) {
                 MessageBox.Show("Invalid cost", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -39,20 +43,18 @@ namespace OrderManager
                 MessageBox.Show("Invalid cost", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
-
-
+            
             // Unique check
-            foreach (Item i in link)
+            foreach (Item i in MainWindowForm.assortmentData.Get())
             {
-                if (i.HasSameName(name))
+                if (i.GetName().ToLower() == name.ToLower())
                 {
                     MessageBox.Show("The item with this name already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
             }
 
-            link.Add(new Item(name, cost));
+            MainWindowForm.assortmentData.Add(new Item(name, cost));
             MainWindowForm.MainWindow.UpdateData(Constants.UPDATE_ASSORTMENT);
         }
 
