@@ -1,0 +1,9 @@
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\bin\Release\Data.dll
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\bin\Release\Data.pdb
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\bin\Release\Core.dll
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\bin\Release\Core.pdb
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\obj\Release\OrderManager.Infrastructure.Data.csprojAssemblyReference.cache
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\obj\Release\OrderManager.Infrastructure.Data.csproj.CoreCompileInputs.cache
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\obj\Release\OrderManager.Infrastructure.Data.csproj.CopyComplete
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\obj\Release\Data.dll
+C:\Users\volya\source\repos\OrderManager\Infrastructure\Data\obj\Release\Data.pdb

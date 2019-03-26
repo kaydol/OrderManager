@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using OrderManager.Domain.Core;
+using OrderManager.Domain.Interfaces;
 
-namespace OrderManager
+namespace OrderManager.Infrastructure.Data
 {
     [Serializable]
-    public class Customer
+    public class Customer : CCustomer, ICustomer
     {
-        String fullname;
-        Order activeOrder;
-        List<Order> history;
-
-        public Customer(String fullname, Order activeOrder=null, List<Order> history=null)
+        public Customer(String fullname, Order activeOrder = null, List<Order> history = null)
         {
             this.fullname = fullname;
             this.activeOrder = activeOrder;
@@ -25,7 +23,7 @@ namespace OrderManager
         public bool AddItemToCart(Item item)
         {
             if (activeOrder == null)
-                activeOrder = new Order();
+                activeOrder = new COrder();
 
             if (activeOrder.IsOverdue()) // can't add items to the overdued orders
                 return false;
@@ -47,7 +45,7 @@ namespace OrderManager
             history.Add(activeOrder);
             activeOrder = null;
         }
-        
+
         public Order GetActiveOrder()
         {
             return activeOrder;

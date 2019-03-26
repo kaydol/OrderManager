@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
+using OrderManager.Domain.Core;
+using OrderManager.Infrastructure.Data;
 
 namespace OrderManager
 {
     public partial class MainWindowForm : Form
     {
-        
         static public NewCustomerForm newCustomerForm = null;
         static public NewItemForm newItemForm = null;
         static public MainWindowForm MainWindow;
@@ -183,24 +183,24 @@ namespace OrderManager
 
         private void toolStripMenuItem_LoadCustomerDB_Click(object sender, EventArgs e)
         {
-            Database.LoadDialogue(ref customerData, "Customer DB (*.bincdb) | *.bincdb");
+            customerData.LoadDialogue("Customer DB (*.bincdb) | *.bincdb");
             UpdateData(Constants.UPDATE_CUSTOMERS);
         }
 
         private void toolStripMenuItem_SaveCustomerDB_Click(object sender, EventArgs e)
         {
-            Database.SaveDialogue(customerData, "Customer DB (*.bincdb) | *.bincdb", ".bincdb");
+            customerData.SaveDialogue("Customer DB (*.bincdb) | *.bincdb", ".bincdb");
         }
 
         private void toolStripMenuItem_LoadMenuDB_Click(object sender, EventArgs e)
         {
-            Database.LoadDialogue(ref assortmentData, "Assortment DB (*.binadb) | *.binadb");
+            assortmentData.LoadDialogue("Assortment DB (*.binadb) | *.binadb");
             UpdateData(Constants.UPDATE_ASSORTMENT);
         }
 
         private void toolStripMenuItem_SaveMenuDB_Click(object sender, EventArgs e)
         {
-            Database.SaveDialogue(assortmentData, "Assortment DB (*.binadb) | *.binadb", ".binadb");
+            assortmentData.SaveDialogue("Assortment DB (*.binadb) | *.binadb", ".binadb");
         }
 
         private void listbox_AllClients_SelectedItemChanged(object sender, EventArgs e)

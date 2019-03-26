@@ -10,3 +10,8 @@ C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Release\OrderManager.c
 C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Release\OrderManager.exe
 C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Release\OrderManager.pdb
 C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Release\OrderManager.csprojAssemblyReference.cache
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Release\Core.dll
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Release\Data.dll
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Release\Core.pdb
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Release\Data.pdb
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Release\OrderManager.csproj.CopyComplete

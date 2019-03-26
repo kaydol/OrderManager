@@ -10,3 +10,8 @@ C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.csp
 C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.exe
 C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.pdb
 C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.NewItemForm.resources
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\Core.dll
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\Data.dll
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\Core.pdb
+C:\Users\volya\source\repos\OrderManager\OrderManager\bin\Debug\Data.pdb
+C:\Users\volya\source\repos\OrderManager\OrderManager\obj\Debug\OrderManager.csproj.CopyComplete

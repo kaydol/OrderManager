@@ -1,0 +1,6 @@
+C:\Users\volya\source\repos\OrderManager\Core\bin\Debug\Core.dll
+C:\Users\volya\source\repos\OrderManager\Core\bin\Debug\Core.pdb
+C:\Users\volya\source\repos\OrderManager\Core\obj\Debug\OrderManager.Domain.Core.csprojAssemblyReference.cache
+C:\Users\volya\source\repos\OrderManager\Core\obj\Debug\OrderManager.Domain.Core.csproj.CoreCompileInputs.cache
+C:\Users\volya\source\repos\OrderManager\Core\obj\Debug\Core.dll
+C:\Users\volya\source\repos\OrderManager\Core\obj\Debug\Core.pdb

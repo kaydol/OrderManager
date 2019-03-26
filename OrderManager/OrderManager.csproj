@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="Item.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +64,6 @@
     <Compile Include="NewItemForm.Designer.cs">
       <DependentUpon>NewItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -100,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\OrderManager.Domain.Core.csproj">
+      <Project>{61814efc-1400-49ac-bc40-1edd229918d6}</Project>
+      <Name>OrderManager.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Data\OrderManager.Infrastructure.Data.csproj">
+      <Project>{0a3c8994-9362-4c05-b649-2cb5739e6427}</Project>
+      <Name>OrderManager.Infrastructure.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
